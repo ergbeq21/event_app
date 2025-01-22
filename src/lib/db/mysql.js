@@ -6,7 +6,7 @@ export function createConnection() {
 		connection = mysql.createConnection({
 			host: 'htl-projekt.com',
 			user: 'ergitbeqiri',
-			port: 3306,
+			port: 33060,
 			password: '!Insy_2024$',
 			database: '2024_4bw_ergitbeqiri_event_app'
 		});
