@@ -3,71 +3,15 @@
 	let { data } = $props();
 </script>
 
-<h1>Write a new Categorie</h1>
+<h1 class="text-4xl text-[#2a2b55] text-center mb-6 font-bold">Write a new Category</h1>
 
-<div class="container">
-	<form method="POST" action="?/createCategorie" use:enhance>
-		<label class="label2" for="name">Name</label>
-		<textarea placeholder="Name" name="name"></textarea>
+<div class="container mx-auto">
+	<form method="POST" action="?/createCategorie" use:enhance class="max-w-lg mx-auto p-8 bg-white rounded-lg shadow-lg flex flex-col">
+		<label for="name" class="text-lg font-semibold mb-2 text-gray-800 uppercase">Name</label>
+		<textarea name="name" placeholder="Name" class="p-3 text-lg border border-gray-300 rounded-md mb-4 min-h-[120px]"></textarea>
 
-		<button type="submit">Create Categorie</button>
+		<button type="submit" class="bg-[#0088a9] text-white py-3 px-6 text-lg font-semibold rounded-md cursor-pointer transition duration-300 ease-in-out hover:bg-[#00788c]">
+			Create Category
+		</button>
 	</form>
 </div>
-
-<style>
-	h1 {
-		font-size: 32px;
-		color: #2a2b55;
-		text-align: center;
-		margin-bottom: 24px;
-		font-weight: 700;
-	}
-
-	form {
-		max-width: 500px;
-		margin: 0 auto;
-		padding: 32px;
-		background-color: #fff;
-		border-radius: 8px;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-		display: flex;
-		flex-direction: column;
-	}
-
-	label {
-		font-size: 16px;
-		font-weight: 600;
-		margin-bottom: 8px;
-		color: #333;
-		text-transform: uppercase;
-		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-	}
-
-	textarea {
-		padding: 12px;
-		font-size: 16px;
-		border: 1px solid #ddd;
-		border-radius: 4px;
-		margin-bottom: 16px;
-	}
-
-	textarea {
-		min-height: 120px;
-	}
-
-	button {
-		background-color: #0088a9;
-		color: #fff;
-		padding: 12px 20px;
-		font-size: 16px;
-		border: none;
-		border-radius: 4px;
-		cursor: pointer;
-		transition: background-color 0.3s ease;
-		font-weight: 600;
-	}
-
-	button:hover {
-		background-color: #00788c;
-	}
-</style>

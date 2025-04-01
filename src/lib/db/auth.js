@@ -23,7 +23,7 @@ export let login = async (email, password) => {
 	let expires = new Date();
 	expires.setDate(expires.getDate() + 7);
 
-	// Save token
+	// Save tokenx`
 	let [result] = await connection.execute(
 		'UPDATE users SET session_token = ?, session_expiration = ? WHERE id = ?',
 		[token, expires, users[0].id]

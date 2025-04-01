@@ -1,134 +1,45 @@
 <script>
-	import { flip } from 'svelte/animate';
 	let { data } = $props();
 	let filteredEvents = $state(data.events);
 	let selectedCategorie = $state('all');
 
 	function filterEvents() {
-		if (selectedCategorie === 'all') {
-			filteredEvents = data.events;
-		} else {
-			filteredEvents = data.events.filter((e) => e.category_id === selectedCategorie.id);
-		}
+		filteredEvents = selectedCategorie === 'all' ? data.events : data.events.filter(e => e.category_id === selectedCategorie.id);
 	}
 </script>
 
-<div class="div1">
+<div class="p-6 text-center">
 	{#if data.user}
-		<p>Welcome back, {data.user.username}</p>
-		<form action="/logout?/logout" method="POST">
-			<button type="submit">Logout</button>
+		<p class="text-lg font-semibold text-gray-800">Welcome back, {data.user.username}</p>
+		<form action="/logout?/logout" method="POST" class="mt-4">
+			<button class="px-6 py-3 bg-red-500 text-white rounded-xl shadow-md hover:bg-red-600 transition duration-300">Logout</button>
 		</form>
-		<form action="/logout?/deleteAccount" method="POST">
-			<button type="submit">Delete Account</button>
+		<form action="/logout?/deleteAccount" method="POST" class="mt-4">
+			<button class="px-6 py-3 bg-gray-500 text-white rounded-xl shadow-md hover:bg-gray-600 transition duration-300">Delete Account</button>
 		</form>
 	{:else}
-		<p>You are not logged in.</p>
-
-		<p>
-			<a href="/login">Login</a>
-			or
-			<a href="/register">Register</a>
+		<p class="text-lg text-gray-700">You are not logged in.</p>
+		<p class="mt-4">
+			<a href="/login" class="text-blue-500 hover:underline text-lg">Login</a> or <a href="/register" class="text-blue-500 hover:underline text-lg">Register</a>
 		</p>
 	{/if}
 </div>
 
-<div class="body">
-	<div class="container">
-		<h1>My Event App</h1>
-
-		<p>Here are the current events.</p>
-
-		<select name="" id="" bind:value={selectedCategorie} onchange={filterEvents}>
-			<option value="all">All</option>
-			{#each data.categories as category}
-				<option value={category}>{category.name}</option>
-			{/each}
-		</select>
-
+<div class="flex flex-col items-center p-8 bg-teal-50 min-h-screen">
+	<h1 class="text-4xl font-bold text-gray-800 mb-6">My Event App</h1>
+	<p class="text-xl text-gray-600 mb-4">Current events:</p>
+	<select bind:value={selectedCategorie} onchange={filterEvents} class="mt-4 p-3 border-2 border-teal-500 rounded-xl bg-white shadow-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-500">
+		<option value="all">All Categories</option>
+		{#each data.categories as category}
+			<option value={category}>{category.name}</option>
+		{/each}
+	</select>
+	<div class="mt-6 w-full max-w-4xl space-y-6">
 		{#each filteredEvents as event (event.id)}
-			<p animate:flip>{event.id} - {event.title} - {new Date(event.start_date).toDateString()}</p>
+			<div class="p-6 bg-white shadow-xl rounded-2xl flex justify-between items-center">
+				<p class="font-semibold text-xl text-gray-800">{event.title}</p>
+				<p class="text-gray-500 text-lg">{new Date(event.start_date).toDateString()}</p>
+			</div>
 		{/each}
 	</div>
 </div>
-
-<style>
-	.body {
-		width: 100%;
-		height: 100vh;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		background-color: rgb(177, 233, 233);
-		animation: 10s change infinite;
-	}
-
-	.container {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-		margin: 200px;
-		background-color: rgb(46, 97, 97);
-		width: 70%;
-		box-shadow: 20px 40px 60px rgba(0, 0, 0, 0.5);
-		transition: 0.7s;
-		animation: scale 2.5s ease-in-out infinite;
-	}
-
-	@keyframes scale {
-		0% {
-			transform: scale(1);
-		}
-		50% {
-			transform: scale(0.9);
-		}
-		100% {
-			transform: scale(1);
-		}
-	}
-
-	.container:hover {
-		transform: scale(1.1);
-		transition: 0.7s;
-	}
-
-	.container h1 {
-		color: white;
-		font-size: 50px;
-		font-family: Arial, Helvetica, sans-serif;
-	}
-
-	.container p {
-		color: white;
-		font-size: 20px;
-		margin: 20px;
-		font-family: 'Courier New', Courier, monospace;
-	}
-
-	.div1 {
-		height: 120px;
-		background-color: rgb(46, 97, 97);
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-	}
-	.div1 p {
-		color: white;
-		font-family: 'Courier New', Courier, monospace;
-		text-transform: capitalize;
-		font-size: 20px;
-	}
-
-	.div1 button {
-		height: 30px;
-		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-		cursor: pointer;
-		transition: 0.7s;
-	}
-	.div1 button:hover {
-		transform: scale(1.1);
-		transition: 0.7s;
-	}
-</style>

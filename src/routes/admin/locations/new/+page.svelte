@@ -2,95 +2,18 @@
 	import { enhance } from '$app/forms';
 </script>
 
-<div class="container">
-	<h1>Create a New Location</h1>
+<div class="flex flex-col items-center w-full p-5 mt-12 bg-white rounded-lg shadow-lg max-w-lg mx-auto">
+	<h1 class="text-3xl font-bold text-teal-700 mb-6">Create a New Location</h1>
 
-	<form method="POST" action="?/createLocation" use:enhance>
-		<div class="info">
-			<label for="name">Name</label>
-			<input type="text" placeholder="Enter location name" name="name" id="name" />
+	<form method="POST" action="?/createLocation" use:enhance class="w-full space-y-4">
+		<div class="flex flex-col gap-4">
+			<label for="name" class="text-lg font-semibold text-gray-700 uppercase">Name</label>
+			<input type="text" placeholder="Enter location name" name="name" id="name" class="h-12 px-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" />
 
-			<label for="street">Street</label>
-			<textarea placeholder="Enter street details" name="street" id="street"></textarea>
+			<label for="street" class="text-lg font-semibold text-gray-700 uppercase">Street</label>
+			<textarea placeholder="Enter street details" name="street" id="street" class="h-32 p-3 border rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-teal-500"></textarea>
 
-			<button type="submit">Create Location</button>
+			<button type="submit" class="w-full py-3 text-white bg-teal-700 rounded-lg hover:bg-teal-600 transition transform hover:scale-105">Create Location</button>
 		</div>
 	</form>
 </div>
-
-<style>
-	.container {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-		width: 100%;
-		padding: 20px;
-		margin-top: 50px;
-		border-radius: 10px;
-	}
-
-	.container h1 {
-		font-family: 'Arial', sans-serif;
-		font-size: 30px;
-		color: #005f73;
-		margin-bottom: 20px;
-	}
-
-	form {
-		width: 100%;
-		width: 500px;
-		background: #ffffff;
-		padding: 20px;
-		border: 1px solid #ddd;
-		border-radius: 10px;
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	}
-
-	.info {
-		display: flex;
-		flex-direction: column;
-		gap: 15px;
-	}
-
-	label {
-		font-family: 'Arial', sans-serif;
-		font-size: 18px;
-		color: #333;
-		margin-bottom: 5px;
-		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-		text-transform: uppercase;
-		font-weight: 600;
-	}
-
-	textarea {
-		resize: none;
-		height: 150px;
-	}
-
-	button {
-		background-color: #005f73;
-		color: #ffffff;
-		font-family: 'Arial', sans-serif;
-		font-size: 1rem;
-		padding: 10px 20px;
-		border: none;
-		border-radius: 5px;
-		cursor: pointer;
-		transition: 0.7s;
-	}
-
-	button:hover {
-		background-color: #0a9396;
-		transform: scale(1.05);
-		transition: 0.7s;
-	}
-
-	button:active {
-		background-color: #94d2bd;
-	}
-
-	input {
-		height: 50px;
-	}
-</style>

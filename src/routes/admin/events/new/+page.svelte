@@ -3,108 +3,44 @@
 	let { data } = $props();
 </script>
 
-<h1>Create a new event</h1>
+<h1 class="text-4xl text-[#2a2b55] text-center mb-6 font-bold">Create a new event</h1>
 
-<div class="container">
-	<form method="POST" action="?/createEvent" use:enhance>
-		<label class="label1" for="title">Title</label>
-		<input type="text" placeholder="Title" name="title" />
+<div class="container mx-auto">
+	<form method="POST" action="?/createEvent" use:enhance class="max-w-xl mx-auto p-8 bg-white rounded-lg shadow-lg flex flex-col">
+		<label for="title" class="text-lg font-semibold mb-2 text-gray-800 uppercase">Title</label>
+		<input type="text" name="title" placeholder="Title" class="p-3 text-lg border border-gray-300 rounded-md mb-4" />
 
-		<label class="label2" for="description">Description</label>
-		<textarea placeholder="Description" name="description"></textarea>
+		<label for="description" class="text-lg font-semibold mb-2 text-gray-800 uppercase">Description</label>
+		<textarea name="description" placeholder="Description" class="p-3 text-lg border border-gray-300 rounded-md mb-4 min-h-[120px]"></textarea>
 
-		<label for="url">URL</label>
-		<input type="text" placeholder="URL" name="url" />
+		<label for="url" class="text-lg font-semibold mb-2 text-gray-800 uppercase">URL</label>
+		<input type="text" name="url" placeholder="URL" class="p-3 text-lg border border-gray-300 rounded-md mb-4" />
 
-		<label for="startDate">Start Date</label>
-		<input type="date" name="startDate" />
+		<label for="startDate" class="text-lg font-semibold mb-2 text-gray-800 uppercase">Start Date</label>
+		<input type="date" name="startDate" class="p-3 text-lg border border-gray-300 rounded-md mb-4" />
 
-		<label for="endDate">End Date</label>
-		<input type="date" name="endDate" />
+		<label for="endDate" class="text-lg font-semibold mb-2 text-gray-800 uppercase">End Date</label>
+		<input type="date" name="endDate" class="p-3 text-lg border border-gray-300 rounded-md mb-4" />
 
-		<label for="startTime">Start Time</label>
-		<input type="time" name="startTime" />
+		<label for="startTime" class="text-lg font-semibold mb-2 text-gray-800 uppercase">Start Time</label>
+		<input type="time" name="startTime" class="p-3 text-lg border border-gray-300 rounded-md mb-4" />
 
-		<label for="location">Location</label>
-		<select name="locationId">
+		<label for="location" class="text-lg font-semibold mb-2 text-gray-800 uppercase">Location</label>
+		<select name="locationId" class="mb-4 h-12 border border-gray-300 rounded-md">
 			{#each data.locations as location (location.id)}
 				<option value={location.id}>{location.name}</option>
 			{/each}
 		</select>
 
-		<label for="location">Categorie</label>
-		<select name="categoryId">
-			{#each data.categories as categorie (categorie.id)}
-				<option value={categorie.id}>{categorie.name}</option>
+		<label for="category" class="text-lg font-semibold mb-2 text-gray-800 uppercase">Category</label>
+		<select name="categoryId" class="mb-4 h-12 border border-gray-300 rounded-md">
+			{#each data.categories as category (category.id)}
+				<option value={category.id}>{category.name}</option>
 			{/each}
 		</select>
 
-		<button type="submit">Create event</button>
+		<button type="submit" class="bg-[#0088a9] text-white py-3 px-6 text-lg font-semibold rounded-md cursor-pointer transition duration-300 ease-in-out hover:bg-[#00788c]">
+			Create event
+		</button>
 	</form>
 </div>
-
-<style>
-	h1 {
-		font-size: 32px;
-		color: #2a2b55;
-		text-align: center;
-		margin-bottom: 24px;
-		font-weight: 700;
-	}
-
-	form {
-		max-width: 500px;
-		margin: 0 auto;
-		padding: 32px;
-		background-color: #fff;
-		border-radius: 8px;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-		display: flex;
-		flex-direction: column;
-	}
-
-	label {
-		font-size: 16px;
-		font-weight: 600;
-		margin-bottom: 10px;
-		color: #333;
-		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-		text-transform: uppercase;
-	}
-
-	input,
-	textarea {
-		padding: 12px;
-		font-size: 16px;
-		border: 1px solid #ddd;
-		border-radius: 4px;
-		margin-bottom: 16px;
-	}
-
-	textarea {
-		min-height: 120px;
-	}
-
-	button {
-		background-color: #0088a9;
-		color: #fff;
-		padding: 12px 20px;
-		font-size: 16px;
-		border: none;
-		border-radius: 4px;
-		cursor: pointer;
-		transition: background-color 0.3s ease;
-		font-weight: 600;
-	}
-
-	button:hover {
-		background-color: #00788c;
-	}
-
-	select {
-		margin-bottom: 10px;
-		height: 50px;
-		border: 1px solid rgba(73, 73, 73, 0.2);
-		border-radius: 3px;
-	}
-</style>
