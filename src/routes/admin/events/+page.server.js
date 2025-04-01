@@ -7,7 +7,7 @@ export async function load({ locals }) {
 	}
 	let connection = await createConnection();
 	let [rows] = await connection.execute(
-		'SELECT e.id, e.title, l.name as locationName, e.start_date FROM events as e LEFT JOIN locations as l on e.location_id = l.id; '
+		'SELECT e.id, e.title, l.name as locationName, e.start_date, e.image FROM events as e LEFT JOIN locations as l on e.location_id = l.id; '
 	);
 
 	return {

@@ -17,6 +17,7 @@
 		<form action="/logout?/deleteAccount" method="POST" class="mt-4">
 			<button class="px-6 py-3 bg-gray-500 text-white rounded-xl shadow-md hover:bg-gray-600 transition duration-300">Delete Account</button>
 		</form>
+		<a href="/admin/events">Go to events</a>
 	{:else}
 		<p class="text-lg text-gray-700">You are not logged in.</p>
 		<p class="mt-4">
@@ -36,10 +37,21 @@
 	</select>
 	<div class="mt-6 w-full max-w-4xl space-y-6">
 		{#each filteredEvents as event (event.id)}
-			<div class="p-6 bg-white shadow-xl rounded-2xl flex justify-between items-center">
-				<p class="font-semibold text-xl text-gray-800">{event.title}</p>
-				<p class="text-gray-500 text-lg">{new Date(event.start_date).toDateString()}</p>
+		  <div class="p-8 bg-white shadow-xl rounded-2xl flex items-center space-x-8">
+			<img 
+			  src={event.image} 
+			  alt={event.title} 
+			  class="h-100 w-150 object-cover rounded-lg" 
+			/>
+			<div class="flex-1 text-right">
+			  <p class="font-bold text-2xl text-gray-800">{event.title}</p>
+			  <p class="font-bold text-xl text-gray-800">{event.description}</p>
+			  <label for="date">Start Date:</label>
+			  <p class="font-bold text-s text-gray-800">{event.start_date}</p>
+			  <p class="text-gray-600 text-xl">{new Date(event.start_date).toLocaleDateString('de-DE')}</p>
 			</div>
+		  </div>
 		{/each}
-	</div>
+	  </div>
+	  
 </div>

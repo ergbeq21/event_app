@@ -6,9 +6,13 @@
 <h1 class="text-4xl text-[#2a2b55] text-center mb-6 font-bold">Create a new event</h1>
 
 <div class="container mx-auto">
-	<form method="POST" action="?/createEvent" use:enhance class="max-w-xl mx-auto p-8 bg-white rounded-lg shadow-lg flex flex-col">
+	<form method="POST" action="?/createEvent" use:enhance class="max-w-xl mx-auto p-8 bg-white rounded-lg shadow-lg flex flex-col" enctype="multipart/form-data">
 		<label for="title" class="text-lg font-semibold mb-2 text-gray-800 uppercase">Title</label>
 		<input type="text" name="title" placeholder="Title" class="p-3 text-lg border border-gray-300 rounded-md mb-4" />
+		
+		<label for="image" class="text-lg font-semibold mb-2 text-gray-800 uppercase">Upload image</label>
+		<input type="file" name="image" class="w-full rounded-lg border border-gray-300 p-2" />
+
 
 		<label for="description" class="text-lg font-semibold mb-2 text-gray-800 uppercase">Description</label>
 		<textarea name="description" placeholder="Description" class="p-3 text-lg border border-gray-300 rounded-md mb-4 min-h-[120px]"></textarea>
