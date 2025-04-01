@@ -34,9 +34,6 @@
 </div>
 
 <style>
-	.container a {
-		animation: scale 3s infinite;
-	}
 
 	@keyframes scale {
 		0%, 100% {

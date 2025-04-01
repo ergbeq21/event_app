@@ -15,6 +15,7 @@ export const handle = async ({ event, resolve }) => {
 	if (users.length === 0) {
 		// if no user is found remove the session cookie
 		event.cookies.set('session', '', {
+			path: '/',
 			maxAge: -1
 		});
 		return await resolve(event);
