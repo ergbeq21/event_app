@@ -23,7 +23,7 @@
 						<p class="text-gray-800 text-lg"><span class="font-semibold">TITLE:</span> {event.title}</p>
 						<p class="text-gray-800 text-lg"><span class="font-semibold">LOCATION:</span> {event.locationName}</p>
 						<p class="text-gray-800 text-lg"><span class="font-semibold">START DATE:</span> {event.start_date}</p>
-						<img src={event.image} alt="" class="h-100  w-200 object-cover" />
+						<img src={event.image} alt="" class="h-80  w-200 object-cover p-3" />
 					</div>
 					<form action="?/deleteEvent" method="POST" class="mt-4">
 						<input type="hidden" name="id" value={event.id} />

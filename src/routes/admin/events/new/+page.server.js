@@ -20,6 +20,7 @@ export const actions = {
 		console.log(formData);
 		const image = formData.get('image');
 
+		console.log(image);
 		const { url } = await put('event_app/' + image.name, image, {
 			access: 'public',
 			token: BLOB_READ_WRITE_TOKEN
